@@ -1,0 +1,33 @@
+{% load static %}
+<html>
+    <head>
+        <title>/   ГРИБЫ В ЛЕСУ  </title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <style type="text/css">
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1><a href="/">   ГРИБЫ В ЛЕСУ  </a></class></h1>
+            <hr>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% for post in posts %}
+                        <div class="post">
+                            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+
+                            <p>{{ post.text|linebreaksbr |truncatechars:100 }}</p>
+                            <div class="date">
+                                <p>Опубликовано: {{ post.published_date }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
